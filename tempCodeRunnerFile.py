@@ -1,1 +1,0 @@
-print(list2.index(3))
