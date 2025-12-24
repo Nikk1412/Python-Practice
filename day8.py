@@ -1,77 +1,86 @@
-## Day 8 : TUPLES
-'''
-A tuple is:
-
-Ordered
-
-Immutable (cannot be changed)
-
-Written using round brackets ()
-'''
-
-subject_list = ("Maths","Science","English")
-
-# You cannot add modify or remove elements from tuple
 
 
+#  Day 8 – 
 
-# 2. Tuple Unpacking
-subject1,subject2,subject3 = subject_list
-print(subject1)
-print(subject2)
-print(subject3)
+##  What is a Tuple?
 
-# 3. Multiple Variable Declaration
-# Python automatically creates a tuple and unpacks it.
+# A tuple is a collection of values that:
+# #  Are ordered
+# #  Are immutable (cannot be changed after creation)
+# #  Use round brackets ()
+
+
+tuple_subject_list = ("Math", "Sci", "English")
+# Once created, you cannot add, remove, or change elements in a tuple.
+
+
+## Tuple Unpacking
+
+# Tuple unpacking allows assigning multiple values in one line.
+
+(subject1, subject2, subject3) = tuple_subject_list
+
+print(subject1)   # Math
+print(subject2)   # Sci
+print(subject3)   # English
+
+
+## Multiple Variable Declaration (Tuple Declaration)
+
 pcb_percentage, pcm_percentage = 2, 1
+# Python internally treats this as tuple unpacking.
 
+##  Variable Swapping (Without Third Variable )
 
-#4. Variable Swapping 
-pcb_group = pcb_percentage
-pcm_group = pcm_percentage
+pcb_group = pcm_percentage
+pcm_group = pcb_percentage
 
+# Swap
 pcb_group, pcm_group = pcm_group, pcb_group
 
-print(pcb_group, pcm_group)
+##  Membership Operator (in)
+# Used to check if an element exists.
+print("Geography" in tuple_subject_list)
 
 
-# 5. Membership Operator (in)
-print("Geography" in subject_list)  # False
+## Why Python is Case-Sensitive?
 
-#6. Why python is case-sensitive?
-# Name and name are treated as different variables
-Name = "Nikk"
-name = "Python"
+# Python treats:
+# name ≠ Name ≠ NAME
+# Because they are different identifiers.
 
 
 
+#  Assignments – Day 8
+##  Assignment 1 – Basic List Operations
 
-## Assignment 1 : Basic lists operations 
-fruits = ['Apple','Banana','Orange','Grapes','Mango']
 
-fruits.remove('Banana')
-fruits.append('Pineapple')
-fruits.insert(2,'Kiwi')
-fruits.extend(['Chikoo','Strawberry'])
+fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"]
+
+fruits.remove("Banana")
+fruits.append("Pineapple")
+fruits.append("Papaya")
+fruits.insert(2, "Kiwi")
 
 print(fruits)
 
-## Assignment 2: Methods Practice
-numbers = [5, 3, 7, 3, 9]
 
-numbers.append(10)
+##  Assignment 2 – Method Practice
+numbers = [10, 20, 30, 20, 40]
+
+numbers.append(50)
 print(numbers)
 
-numbers.insert(1, 4)
+numbers.insert(2, 15)
 print(numbers)
 
-numbers.remove(3)
+numbers.remove(20)
 print(numbers)
 
 numbers.pop()
 print(numbers)
 
-print(numbers.count(3))
+print(numbers.count(20))
 
 numbers.reverse()
 print(numbers)
@@ -80,77 +89,97 @@ numbers.sort()
 print(numbers)
 
 
-# Assignment 3: extend method
+
+
+## Assignment 3 – Extend Method
+
 
 subjects1 = ["Math", "Physics"]
 subjects2 = ["Chemistry", "Biology"]
 
 subjects1.extend(subjects2)
+
 print(subjects1)
+#  extend() adds elements one by one, not as a nested list.
 
 
-# Assignment 4 :
-# Why is list called mutable?
-#- Because we can change, add, or remove elements after creation.
 
-# Difference between append() and extend()?
-# append()- adds one item , adds as single element
-# extend()- Adds multiple items, Merges list
+## Assignment 4 – Thinking Questions
+
+### Why is list called mutable?
+# Because we can change, add, or remove elements after creation.
 
 
-a = [1, 2]
-a.append([3, 4])   # [1, 2, [3, 4]]
-a.extend([5, 6])   # [1, 2, [3, 4], 5, 6]
-print(a)
 
-
-## Additional Topics 
-# 1. Operator Overloading
-print(2 + 3)        # 5
-print("Py" + "thon") # Python
-
-
-#2. Bytearray
+### 🔹 Difference between append() and extend()?
 '''
-Mutable version of bytes
-
-Used in low-level programming
+append()  -->  Adds single element , Can add list as one item              
+extend() --->  Adds multiple elements, Merges lists
 '''
+     
+    
+### What happens if we use wrong index?
+# IndexError: list index out of range
+
+
+
+
+##  Operator Overloading
+
+print(10 + 20)     # Adds numbers
+print("Hi" + "Bye")  # Concatenates strings
+#  Same operator, different behavior.
+
+
+
+## 2️ bytearray
 b = bytearray([65, 66, 67])
-b[0] = 68
+b[0] = 97
 print(b)
 
 
-#3. Set
-# Unordered
-# No duplicates
-s = {1, 2, 3, 3}
-print(s)
 
-##4. Frozenset
-# immutable dataset
-#Cannot add or remove elements.
+
+## 3️ Set
+
+#  Unordered ,  No duplicates, Mutable
+my_set = {1, 2, 3, 3}
+print(my_set)
+
+
+## Frozenset
+
+#  Immutable version of set
+#  Cannot add or remove elements.
+
 fs = frozenset([1, 2, 3])
 
-
-## Dictionary Understanding 
+# Dictionary – 
 student = {
     "name": "Nikk",
-    "age": 20,
-    "course": "Python"
+    "age": 22,
+    "course": "BTech CSE"
 }
 
 print(student.keys())
 print(student.values())
 print(student.items())
 
+## Difference: pop() vs popitem()
 
-student.pop("age")        # removes specific key
-student.popitem()         # removes last inserted item
+student.pop("age")     # Removes specific key
+student.popitem()      # Removes last inserted item
 
 
+## del Keyword
 del student["course"]
 
-student.update({"age": 21})
+
+
+
+## update() and get()
+#  get() avoids errors if key not found.
+
+student.update({"city": "Pune"})
 print(student.get("name"))
-print(student.get("marks", "Not Found"))
+
